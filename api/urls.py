@@ -1,9 +1,12 @@
 from django.urls import path
-from .views import TaskList, TaskDetail
+from .views import TaskList, TaskDetail, LoginView
 
 app_name = 'api'
 
 urlpatterns = [
     path('tasks/', TaskList.as_view(), name='task-list'),
     path('tasks/<int:pk>/', TaskDetail.as_view(), name='task-detail'),
+    # authentication
+    path('users/login/', LoginView.as_view(), name='login'),
+
 ]
