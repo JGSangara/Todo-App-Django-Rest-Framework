@@ -1,7 +1,7 @@
 from rest_framework import generics
 
 from tasks.models import Task
-from .serializers import TaskSerializer, LoginSerializer
+from .serializers import TaskSerializer, LoginSerializer, RegisterSerializer
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -30,3 +30,17 @@ class LoginView(generics.GenericAPIView):
             "message": "User logged in  successfully",
             "token": serializer.data['token']
         }, status=status.HTTP_200_OK)
+
+
+class RegisterView(generics.GenericAPIView):
+    serializer_class = RegisterSerializer
+
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({
+            "success": True,
+            "status code": status.HTTP_201_CREATED,
+            "message": "User registered  successfully",
+        }, status=status.HTTP_201_CREATED)
