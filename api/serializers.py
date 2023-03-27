@@ -46,3 +46,29 @@ class ChangePasswordSerializer(serializers.Serializer):
 
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
+
+
+class PasswordResetSerializer(serializers.Serializer):
+    email = serializers.EmailField(required=True)
+
+    def validate_email(self, value):
+        if not User.objects.filter(email=value).exists():
+            raise serializers.ValidationError("User with this email does not exist")
+        return value
+
+    def validate(self, data):
+        return data
+
+
+class PasswordResetConfirmSerializer(serializers.Serializer):
+    new_password = serializers.CharField(required=True)
+    re_new_password = serializers.CharField(required=True)
+    uidb64 = serializers.CharField(required=True)
+    token = serializers.CharField(required=True)
+
+    def validate(self, data):
+        new_password = data.get('new_password')
+        re_new_password = data.get('re_new_password')
+        if new_password != re_new_password:
+            raise serializers.ValidationError("Passwords must match")
+        return data
