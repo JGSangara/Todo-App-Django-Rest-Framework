@@ -6,7 +6,7 @@ class TestUserModel(TestCase):
 
     def setUp(self):
         self.email = 'test@example.com'
-        self.password = 'testpassword'
+        self.password = 'password123'
 
     def test_create_user(self):
         user = User.objects.create_user(email=self.email, password=self.password)
