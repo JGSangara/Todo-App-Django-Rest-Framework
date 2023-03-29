@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
 
-from .models import User
+from .models import Profile, User
 
 # Register your models here.
 
@@ -27,4 +27,9 @@ class UserAdmin(UserAdmin):
     ordering = ('email',)
 
 
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'profile_pic')
+
+
 admin.site.register(User, UserAdmin)
+admin.site.register(Profile, ProfileAdmin)

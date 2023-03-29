@@ -13,21 +13,31 @@ from tasks.models import Task
 from .serializers import (ChangePasswordSerializer,
                           PasswordResetConfirmSerializer,
                           PasswordResetSerializer, RegisterSerializer,
-                          TaskSerializer)
+                          TaskSerializer, UserSerializer)
 
 # Create your views here.
 
 
 class TaskList(generics.ListCreateAPIView):
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
 
 class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+
+# Authentication
+
+
+class UserDetailView(generics.RetrieveUpdateAPIView):
+    serializer_class = UserSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_object(self):
+        return self.request.user
 
 
 class RegisterView(generics.GenericAPIView):
