@@ -1,9 +1,19 @@
 from django.urls import path
-from rest_framework_simplejwt.views import (TokenObtainPairView,
-                                            TokenRefreshView, TokenVerifyView)
-
-from .views import (ChangePasswordView, RegisterView, TaskDetail, TaskList,
-                    LogoutView, PasswordResetView, PasswordResetConfirmView, UserDetailView)
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView
+)
+from .views import (
+    ChangePasswordView,
+    RegisterView,
+    TaskDetail,
+    TaskList,
+    LogoutView,
+    PasswordResetView,
+    PasswordResetConfirmView,
+    UserDetailView
+)
 
 app_name = 'api'
 
