@@ -6,8 +6,8 @@ from django.urls import reverse
 from rest_framework import generics, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
+from rest_framework_simplejwt.tokens import RefreshToken
 
 from accounts.models import User
 from tasks.models import Task
@@ -21,9 +21,8 @@ from .serializers import (
     UserSerializer,
 )
 
+
 # Create your views here.
-
-
 class TaskList(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Task.objects.all()
@@ -37,14 +36,15 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 # Authentication
-
-
 class UserDetailView(generics.RetrieveUpdateAPIView):
     serializer_class = UserSerializer
     permission_classes = (IsAuthenticated,)
 
     def get_object(self):
         return self.request.user
+
+    def get_queryset(self):
+        return User.objects.filter(id=self.request.user.id)
 
 
 class RegisterView(generics.GenericAPIView):

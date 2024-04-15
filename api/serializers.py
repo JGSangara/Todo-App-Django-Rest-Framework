@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from accounts.models import User, Profile
+from accounts.models import Profile, User
 from tasks.models import Task
 
 
