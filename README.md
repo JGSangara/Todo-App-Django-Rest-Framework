@@ -55,10 +55,32 @@ To run tests, execute the following command:
 python manage.py test
 ```
 
-## 🛠️ Built With
+## 🛠️ Tech Stack
 
-- Django
-- Django REST Framework
+**Backend Framework:**
+- Django 5.2.10
+- Django REST Framework 3.16.1
+
+**Authentication:**
+- djangorestframework-simplejwt 5.5.1 (JWT Token Authentication)
+- Token blacklisting for secure logout
+
+**API Documentation:**
+- drf-yasg 1.21.11 (Swagger/OpenAPI specification)
+
+**Additional Libraries:**
+- django-cors-headers 4.9.0 (Cross-Origin Resource Sharing)
+- django-filter 25.2 (Filtering and search capabilities)
+- django-environ 0.12.0 (Environment variable management)
+- Pillow 12.1.0 (Image processing)
+- PyJWT 2.10.1 (JSON Web Token implementation)
+
+**Database:**
+- SQLite (Development)
+- PostgreSQL ready (Production)
+
+**Python Version:**
+- Python 3.9+
 
 ## 🤝 Contributing
 

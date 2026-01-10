@@ -1,16 +1,8 @@
 from rest_framework import serializers
 
 from accounts.models import Profile, User
-from tasks.models import Task
 
 
-class TaskSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Task
-        fields = "__all__"
-
-
-# Authentication
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
