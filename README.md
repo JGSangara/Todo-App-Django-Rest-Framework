@@ -2,7 +2,8 @@
 
 This is a REST API for a Todo application, built with Django and Django REST Framework.
 
-![Screenshot of the application](https://github.com/JGSangara/todo_app_restAPI/blob/master/static/images/screenshot.png)
+![Screenshot of the application](https://github.com/JGSangara/Resources/blob/main/Todo-App-Django-Rest-Framework.png)
+
 
 ## 🚀 Features
 
